@@ -1,0 +1,20 @@
+{
+  "name": "qr-art-studio",
+  "private": true,
+  "version": "1.0.0",
+  "type": "module",
+  "scripts": {
+    "dev": "vite --port 8000 --host",
+    "build": "tsc && vite build",
+    "preview": "vite preview --port 8000 --host"
+  },
+  "dependencies": {
+    "qrcode-generator": "^1.4.4"
+  },
+  "devDependencies": {
+    "sass": "^1.72.0",
+    "typescript": "^5.4.2",
+    "vite": "^5.2.0",
+    "vite-plugin-pwa": "^0.19.2"
+  }
+}

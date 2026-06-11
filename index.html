@@ -1,0 +1,444 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>QR Art Studio - Premium Custom QR Code Generator</title>
+
+  <!-- SEO Meta Tags -->
+  <meta name="description" content="Tạo mã QR nghệ thuật, tùy biến hình dáng, màu sắc gradient, thêm logo watermark và nhãn chữ. Sử dụng hoàn toàn offline, bảo mật và chất lượng cao.">
+  <meta name="keywords" content="QR code generator, custom qr, designer qr, qr offline, tạo mã qr, custom qr code, qr gradient">
+
+  <!-- PWA Theme & Manifest -->
+  <meta name="theme-color" content="#c3002f">
+  <link rel="icon" type="image/svg+xml" href="/icon.svg">
+  <link rel="alternate icon" type="image/x-icon" href="/favicon.ico">
+  <link rel="apple-touch-icon" href="/icon.svg">
+
+  <!-- Google Fonts & FontAwesome Icons -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" crossorigin="anonymous" referrerpolicy="no-referrer" />
+</head>
+<body>
+
+  <!-- Header -->
+  <header>
+    <div class="logo-container">
+      <svg class="logo-icon" viewBox="0 0 512 512" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <rect width="512" height="512" rx="128" fill="url(#headerBg)" />
+        <rect x="64" y="64" width="384" height="384" rx="80" fill="none" stroke="url(#headerGlow)" stroke-width="20" />
+        <rect x="128" y="128" width="96" height="96" rx="16" fill="url(#headerGlow)" />
+        <rect x="288" y="128" width="96" height="96" rx="16" fill="url(#headerGlow)" />
+        <rect x="128" y="288" width="96" height="96" rx="16" fill="url(#headerGlow)" />
+        <circle cx="256" cy="256" r="24" fill="#ffffff" />
+        <defs>
+          <linearGradient id="headerBg" x1="0%" y1="0%" x2="100%" y2="100%">
+            <stop offset="0%" stop-color="#c3002f" />
+            <stop offset="100%" stop-color="#a00026" />
+          </linearGradient>
+          <linearGradient id="headerGlow" x1="0%" y1="0%" x2="100%" y2="100%">
+            <stop offset="0%" stop-color="#ffffff" />
+            <stop offset="100%" stop-color="#fff0f0" />
+          </linearGradient>
+        </defs>
+      </svg>
+      <span class="logo-text">QR Art Studio</span>
+    </div>
+    <div class="offline-badge" id="networkStatus">Sẵn sàng ngoại tuyến</div>
+  </header>
+
+  <!-- Main Content App -->
+  <main class="app-container">
+
+    <!-- Left Section: Controls -->
+    <section class="panel" id="controlsPanel">
+      <h2 class="panel-title"><i class="fa-solid fa-sliders"></i> Tùy Chỉnh Thiết Kế</h2>
+
+      <!-- Collapsible / Category Tabs -->
+      <div class="tabs-header">
+        <button class="tab-btn active" data-tab="content"><i class="fa-solid fa-keyboard"></i> Nội dung</button>
+        <button class="tab-btn" data-tab="style"><i class="fa-solid fa-wand-magic-sparkles"></i> Hình dáng</button>
+        <button class="tab-btn" data-tab="colors"><i class="fa-solid fa-palette"></i> Màu sắc</button>
+        <button class="tab-btn" data-tab="watermark"><i class="fa-solid fa-image"></i> Logo</button>
+        <button class="tab-btn" data-tab="label"><i class="fa-solid fa-font"></i> Chữ</button>
+      </div>
+
+      <!-- Tab 1: Content -->
+      <div class="tab-content active" id="tab-content">
+        <div class="control-group">
+          <label for="qrText">Văn bản hoặc URL liên kết</label>
+          <textarea id="qrText" placeholder="Nhập liên kết website hoặc thông điệp tại đây... (Nhấn Enter để xuống dòng)" rows="4">https://google.com</textarea>
+        </div>
+      </div>
+
+      <!-- Tab 2: Shape Customization -->
+      <div class="tab-content" id="tab-style">
+        <div class="control-group">
+          <label>Kiểu điểm ảnh (Dot Style)</label>
+          <div class="option-grid" id="dotStyleGrid">
+            <div class="option-card active" data-value="square">
+              <div class="option-icon"><i class="fa-solid fa-square"></i></div>
+              <div class="option-label">Vuông</div>
+            </div>
+            <div class="option-card" data-value="dots">
+              <div class="option-icon"><i class="fa-solid fa-circle"></i></div>
+              <div class="option-label">Tròn</div>
+            </div>
+            <div class="option-card" data-value="rounded">
+              <div class="option-icon"><i class="fa-solid fa-chart-line"></i></div>
+              <div class="option-label">Dòng chảy</div>
+            </div>
+          </div>
+        </div>
+
+        <div class="control-group">
+          <label>Viền Mắt Góc (Corner Eye Frame Style)</label>
+          <div class="option-grid" id="eyeFrameGrid">
+            <div class="option-card active" data-value="square">
+              <div class="option-icon"><i class="fa-regular fa-square"></i></div>
+              <div class="option-label">Vuông</div>
+            </div>
+            <div class="option-card" data-value="rounded">
+              <div class="option-icon"><i class="fa-solid fa-square-minus"></i></div>
+              <div class="option-label">Bo góc</div>
+            </div>
+            <div class="option-card" data-value="circle">
+              <div class="option-icon"><i class="fa-regular fa-circle"></i></div>
+              <div class="option-label">Tròn</div>
+            </div>
+          </div>
+        </div>
+
+        <div class="control-group">
+          <label>Tâm Mắt Góc (Corner Eye Ball Style)</label>
+          <div class="option-grid" id="eyeBallGrid">
+            <div class="option-card active" data-value="square">
+              <div class="option-icon"><i class="fa-solid fa-square"></i></div>
+              <div class="option-label">Vuông</div>
+            </div>
+            <div class="option-card" data-value="rounded">
+              <div class="option-icon"><i class="fa-solid fa-square-full"></i></div>
+              <div class="option-label">Bo góc</div>
+            </div>
+            <div class="option-card" data-value="circle">
+              <div class="option-icon"><i class="fa-solid fa-circle"></i></div>
+              <div class="option-label">Tròn</div>
+            </div>
+          </div>
+        </div>
+
+        <div class="control-group">
+          <label>Khung viền mã QR (QR Frame Style)</label>
+          <div class="option-grid" id="frameStyleGrid" style="grid-template-columns: repeat(4, 1fr);">
+            <div class="option-card active" data-value="none">
+              <div class="option-icon"><i class="fa-solid fa-ban"></i></div>
+              <div class="option-label">Không</div>
+            </div>
+            <div class="option-card" data-value="square">
+              <div class="option-icon"><i class="fa-regular fa-square"></i></div>
+              <div class="option-label">Vuông</div>
+            </div>
+            <div class="option-card" data-value="rounded">
+              <div class="option-icon"><i class="fa-solid fa-square-minus"></i></div>
+              <div class="option-label">Bo góc</div>
+            </div>
+            <div class="option-card" data-value="circle">
+              <div class="option-icon"><i class="fa-regular fa-circle"></i></div>
+              <div class="option-label">Tròn</div>
+            </div>
+          </div>
+        </div>
+
+        <div id="frameSettings" style="display: none; margin-top: 10px;">
+          <div class="control-group inline">
+            <div>
+              <label>Màu khung viền</label>
+              <div class="color-row">
+                <div class="color-input-wrapper">
+                  <input type="color" id="frameColor" value="#c3002f">
+                </div>
+              </div>
+            </div>
+            <div>
+              <label for="frameWidth">Độ dày khung (px)</label>
+              <div class="slider-container">
+                <input type="range" id="frameWidth" min="4" max="24" value="12">
+                <span class="slider-val" id="frameWidthVal">12px</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Tab 3: Colors -->
+      <div class="tab-content" id="tab-colors">
+        <div class="control-group">
+          <label>Kiểu màu mã QR</label>
+          <div class="option-grid" id="colorTypeGrid" style="grid-template-columns: 1fr 1fr;">
+            <div class="option-card active" data-value="solid">
+              <div class="option-label">Đơn màu</div>
+            </div>
+            <div class="option-card" data-value="gradient">
+              <div class="option-label">Màu Gradient</div>
+            </div>
+          </div>
+        </div>
+
+        <div id="gradientControls" style="display: none;">
+          <div class="control-group inline">
+            <div>
+              <label>Điểm bắt đầu</label>
+              <div class="color-row">
+                <div class="color-input-wrapper">
+                  <input type="color" id="qrColor1" value="#c3002f">
+                </div>
+                <span class="color-hex" id="qrColor1Hex">#C3002F</span>
+              </div>
+            </div>
+            <div>
+              <label>Điểm kết thúc</label>
+              <div class="color-row">
+                <div class="color-input-wrapper">
+                  <input type="color" id="qrColor2" value="#ff4d4f">
+                </div>
+                <span class="color-hex" id="qrColor2Hex">#FF4D4F</span>
+              </div>
+            </div>
+          </div>
+
+          <div class="control-group">
+            <label for="gradAngle">Góc Gradient (Độ)</label>
+            <div class="slider-container">
+              <input type="range" id="gradAngle" min="0" max="360" value="135">
+              <span class="slider-val" id="gradAngleVal">135°</span>
+            </div>
+          </div>
+        </div>
+
+        <div id="solidColorControl">
+          <div class="control-group">
+            <label>Màu mã QR</label>
+            <div class="color-row">
+              <div class="color-input-wrapper">
+                <input type="color" id="qrSolidColor" value="#1a1a1a">
+              </div>
+              <span class="color-hex" id="qrSolidColorHex">#1A1A1A</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="control-group">
+          <label class="switch-container">
+            <div class="switch-label-group">
+              <span>Tùy chỉnh riêng màu Mắt góc</span>
+              <span>Đổi màu 3 góc tìm kiếm</span>
+            </div>
+            <div class="switch">
+              <input type="checkbox" id="customEyeColor">
+              <span class="slider-switch"></span>
+            </div>
+          </label>
+        </div>
+
+        <div id="eyeColorControls" style="display: none;">
+          <div class="control-group inline">
+            <div>
+              <label>Màu viền mắt</label>
+              <div class="color-row">
+                <div class="color-input-wrapper">
+                  <input type="color" id="eyeFrameColor" value="#c3002f">
+                </div>
+              </div>
+            </div>
+            <div>
+              <label>Màu tâm mắt</label>
+              <div class="color-row">
+                <div class="color-input-wrapper">
+                  <input type="color" id="eyeBallColor" value="#ff4d4f">
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <hr style="border: none; border-top: 1px solid var(--card-border); margin: 1.5rem 0;">
+
+        <div class="control-group">
+          <label class="switch-container">
+            <div class="switch-label-group">
+              <span>Nền trong suốt</span>
+              <span>Bỏ màu nền (tạo ảnh PNG trong suốt)</span>
+            </div>
+            <div class="switch">
+              <input type="checkbox" id="transparentBg">
+              <span class="slider-switch"></span>
+            </div>
+          </label>
+        </div>
+
+        <div id="bgColorControl">
+          <div class="control-group">
+            <label>Màu nền</label>
+            <div class="color-row">
+              <div class="color-input-wrapper">
+                <input type="color" id="bgColor" value="#ffffff">
+              </div>
+              <span class="color-hex" id="bgColorHex">#FFFFFF</span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Tab 4: Watermark (Logo) -->
+      <div class="tab-content" id="tab-watermark">
+        <div class="control-group">
+          <label>Tải lên Logo (Watermark)</label>
+          <div class="file-upload-zone" id="logoDropZone">
+            <div class="file-upload-icon"><i class="fa-solid fa-cloud-arrow-up"></i></div>
+            <div class="file-upload-text">Kéo thả hình ảnh vào đây hoặc <strong>Chọn tệp</strong></div>
+            <input type="file" id="logoUpload" accept="image/*" style="display: none;">
+          </div>
+
+          <div id="logoPreviewContainer" style="display: none;">
+            <div class="logo-preview-box">
+              <div class="logo-thumb-container">
+                <img id="logoPreviewThumb" class="logo-thumb" alt="Thumbnail">
+              </div>
+              <div class="logo-details">
+                <div id="logoFileName">logo.png</div>
+                <div id="logoFileSize">12KB</div>
+              </div>
+              <button class="remove-logo-btn" id="removeLogo"><i class="fa-solid fa-trash-can"></i></button>
+            </div>
+          </div>
+        </div>
+
+        <div id="logoTweakSettings" style="display: none;">
+          <div class="control-group">
+            <label for="logoSize">Kích thước logo (%)</label>
+            <div class="slider-container">
+              <input type="range" id="logoSize" min="10" max="30" value="20">
+              <span class="slider-val" id="logoSizeVal">20%</span>
+            </div>
+          </div>
+
+          <div class="control-group">
+            <label class="switch-container">
+              <div class="switch-label-group">
+                <span>Dọn sạch pixel phía sau logo</span>
+                <span>Xóa phần mã QR trùng lặp dưới logo để tăng khả năng quét</span>
+              </div>
+              <div class="switch">
+                <input type="checkbox" id="clearBehindLogo" checked>
+                <span class="slider-switch"></span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Tab 5: Label (Text) -->
+      <div class="tab-content" id="tab-label">
+        <!-- Top Label Section -->
+        <div class="control-group">
+          <label for="labelTopText">Nhãn chữ phía trên mã QR</label>
+          <textarea id="labelTopText" placeholder="Ví dụ: THƯ VIỆN NGHỆ THUẬT&#10;(Nhấn Enter để xuống dòng)" rows="2"></textarea>
+        </div>
+        
+        <div id="labelTopSettings" style="display: none; margin-bottom: 1.5rem;">
+          <div class="control-group inline">
+            <div>
+              <label>Màu chữ trên</label>
+              <div class="color-row">
+                <div class="color-input-wrapper">
+                  <input type="color" id="labelTopColor" value="#1a1a1a">
+                </div>
+              </div>
+            </div>
+            <div>
+              <label for="fontWeightTop">Độ dày chữ trên</label>
+              <select id="fontWeightTop">
+                <option value="normal">Bình thường</option>
+                <option value="bold" selected>In đậm (Bold)</option>
+              </select>
+            </div>
+          </div>
+          <div class="control-group">
+            <label for="labelTopSize">Cỡ chữ trên (px)</label>
+            <div class="slider-container">
+              <input type="range" id="labelTopSize" min="10" max="32" value="18">
+              <span class="slider-val" id="labelTopSizeVal">18px</span>
+            </div>
+          </div>
+        </div>
+
+        <hr style="border: none; border-top: 1px solid var(--color-border-soft); margin: 1.5rem 0;">
+
+        <!-- Bottom Label Section -->
+        <div class="control-group">
+          <label for="labelText">Nhãn chữ phía dưới mã QR</label>
+          <textarea id="labelText" placeholder="Ví dụ: QUÉT TÔI NHÉ&#10;(Nhấn Enter để xuống dòng)" rows="2"></textarea>
+        </div>
+
+        <div id="labelBottomSettings" style="display: none;">
+          <div class="control-group inline">
+            <div>
+              <label>Màu chữ dưới</label>
+              <div class="color-row">
+                <div class="color-input-wrapper">
+                  <input type="color" id="labelColor" value="#1a1a1a">
+                </div>
+              </div>
+            </div>
+            <div>
+              <label for="fontWeight">Độ dày chữ dưới</label>
+              <select id="fontWeight">
+                <option value="normal">Bình thường</option>
+                <option value="bold" selected>In đậm (Bold)</option>
+              </select>
+            </div>
+          </div>
+
+          <div class="control-group">
+            <label for="labelSize">Cỡ chữ dưới (px)</label>
+            <div class="slider-container">
+              <input type="range" id="labelSize" min="10" max="32" value="18">
+              <span class="slider-val" id="labelSizeVal">18px</span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+    </section>
+
+    <!-- Right Section: Live Preview Card -->
+    <section class="preview-sticky">
+      <div class="qr-card">
+        <div class="qr-box">
+          <canvas id="qrCanvas"></canvas>
+        </div>
+
+        <div class="export-container">
+          <button class="btn-primary" id="downloadPng"><i class="fa-solid fa-download"></i> Tải về file PNG</button>
+
+          <div class="export-row">
+            <button class="btn-secondary" id="downloadJpg"><i class="fa-regular fa-image"></i> JPG</button>
+            <button class="btn-secondary" id="downloadSvg"><i class="fa-solid fa-code"></i> Vector SVG</button>
+          </div>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- Footer -->
+  <footer>
+    <p>QR Art Studio &copy; 2026. Thiết kế cao cấp, hoạt động 100% bảo mật ngoại tuyến (offline).</p>
+  </footer>
+
+  <!-- Vite entry script -->
+  <script type="module" src="/src/main.ts"></script>
+</body>
+</html>

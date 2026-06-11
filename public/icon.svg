@@ -1,0 +1,30 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" width="100%" height="100%">
+  <defs>
+    <linearGradient id="bgGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#c3002f" />
+      <stop offset="100%" stop-color="#a00026" />
+    </linearGradient>
+    <linearGradient id="glowGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#ffffff" />
+      <stop offset="100%" stop-color="#fff0f0" />
+    </linearGradient>
+  </defs>
+  
+  <!-- Background -->
+  <rect width="512" height="512" rx="128" fill="url(#bgGrad)" />
+  
+  <!-- Inner border ring -->
+  <rect x="64" y="64" width="384" height="384" rx="80" fill="none" stroke="url(#glowGrad)" stroke-width="20" />
+  
+  <!-- Finder pattern top-left -->
+  <rect x="128" y="128" width="96" height="96" rx="16" fill="url(#glowGrad)" />
+  
+  <!-- Finder pattern top-right -->
+  <rect x="288" y="128" width="96" height="96" rx="16" fill="url(#glowGrad)" />
+  
+  <!-- Finder pattern bottom-left -->
+  <rect x="128" y="288" width="96" height="96" rx="16" fill="url(#glowGrad)" />
+  
+  <!-- Central dot -->
+  <circle cx="256" cy="256" r="24" fill="#ffffff" />
+</svg>
