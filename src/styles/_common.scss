@@ -337,3 +337,30 @@ canvas { width: 280px; height: 280px; display: block; border-radius: 4px; }
   background: transparent; border: none; color: var(--color-danger); @extend .interactive; font-size: 1.1rem; padding: 4px; @extend .radius-sm;
   &:hover { background: var(--color-danger-soft); transform: none; }
 }
+
+// --- 6. Moved Inline Styles ---
+
+// Hidden elements (can be overridden by JS style.display)
+#frameSettings,
+#gradientControls,
+#eyeColorControls,
+#logoPreviewContainer,
+#logoTweakSettings,
+#labelTopSettings,
+#labelBottomSettings,
+#logoUpload {
+  display: none;
+}
+
+// Utilities
+.mt-10px { margin-top: 10px; }
+.mb-1-5rem { margin-bottom: 1.5rem; }
+.grid-cols-4 { grid-template-columns: repeat(4, 1fr); }
+.grid-cols-2 { grid-template-columns: 1fr 1fr; }
+
+// Specific components
+h1.logo-text { margin: 0; font-size: inherit; font-weight: inherit; }
+.divider-hr { border: none; border-top: 1px solid var(--card-border); margin: 1.5rem 0; }
+.divider-hr-soft { border: none; border-top: 1px solid var(--color-border-soft); margin: 1.5rem 0; }
+.footer-credit { margin-top: 10px; font-size: 0.9em; color: var(--color-text-dim); }
+.footer-link { color: var(--color-primary); text-decoration: none; font-weight: bold; }

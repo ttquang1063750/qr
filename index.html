@@ -57,7 +57,7 @@
           </linearGradient>
         </defs>
       </svg>
-      <h1 class="logo-text" style="margin: 0; font-size: inherit; font-weight: inherit;">QR Art Studio</h1>
+      <h1 class="logo-text">QR Art Studio</h1>
     </div>
     <div class="offline-badge" id="networkStatus">Sẵn sàng ngoại tuyến</div>
   </header>
@@ -144,7 +144,7 @@
 
         <div class="control-group">
           <label>Khung viền mã QR (QR Frame Style)</label>
-          <div class="option-grid" id="frameStyleGrid" style="grid-template-columns: repeat(4, 1fr);">
+          <div class="option-grid grid-cols-4" id="frameStyleGrid">
             <div class="option-card active" data-value="none">
               <div class="option-icon"><i class="fa-solid fa-ban"></i></div>
               <div class="option-label">Không</div>
@@ -164,7 +164,7 @@
           </div>
         </div>
 
-        <div id="frameSettings" style="display: none; margin-top: 10px;">
+        <div id="frameSettings" class="mt-10px">
           <div class="control-group inline">
             <div>
               <label>Màu khung viền</label>
@@ -189,7 +189,7 @@
       <div class="tab-content" id="tab-colors">
         <div class="control-group">
           <label>Kiểu màu mã QR</label>
-          <div class="option-grid" id="colorTypeGrid" style="grid-template-columns: 1fr 1fr;">
+          <div class="option-grid grid-cols-2" id="colorTypeGrid">
             <div class="option-card active" data-value="solid">
               <div class="option-label">Đơn màu</div>
             </div>
@@ -199,7 +199,7 @@
           </div>
         </div>
 
-        <div id="gradientControls" style="display: none;">
+        <div id="gradientControls">
           <div class="control-group inline">
             <div>
               <label>Điểm bắt đầu</label>
@@ -255,7 +255,7 @@
           </label>
         </div>
 
-        <div id="eyeColorControls" style="display: none;">
+        <div id="eyeColorControls">
           <div class="control-group inline">
             <div>
               <label>Màu viền mắt</label>
@@ -276,7 +276,7 @@
           </div>
         </div>
 
-        <hr style="border: none; border-top: 1px solid var(--card-border); margin: 1.5rem 0;">
+        <hr class="divider-hr">
 
         <div class="control-group">
           <label class="switch-container">
@@ -311,10 +311,10 @@
           <div class="file-upload-zone" id="logoDropZone">
             <div class="file-upload-icon"><i class="fa-solid fa-cloud-arrow-up"></i></div>
             <div class="file-upload-text">Kéo thả hình ảnh vào đây hoặc <strong>Chọn tệp</strong></div>
-            <input type="file" id="logoUpload" accept="image/*" style="display: none;">
+            <input type="file" id="logoUpload" accept="image/*">
           </div>
 
-          <div id="logoPreviewContainer" style="display: none;">
+          <div id="logoPreviewContainer">
             <div class="logo-preview-box">
               <div class="logo-thumb-container">
                 <img id="logoPreviewThumb" class="logo-thumb" alt="Thumbnail">
@@ -328,7 +328,7 @@
           </div>
         </div>
 
-        <div id="logoTweakSettings" style="display: none;">
+        <div id="logoTweakSettings">
           <div class="control-group">
             <label for="logoSize">Kích thước logo (%)</label>
             <div class="slider-container">
@@ -360,7 +360,7 @@
           <textarea id="labelTopText" placeholder="Ví dụ: THƯ VIỆN NGHỆ THUẬT&#10;(Nhấn Enter để xuống dòng)" rows="2"></textarea>
         </div>
         
-        <div id="labelTopSettings" style="display: none; margin-bottom: 1.5rem;">
+        <div id="labelTopSettings" class="mb-1-5rem">
           <div class="control-group inline">
             <div>
               <label>Màu chữ trên</label>
@@ -387,7 +387,7 @@
           </div>
         </div>
 
-        <hr style="border: none; border-top: 1px solid var(--color-border-soft); margin: 1.5rem 0;">
+        <hr class="divider-hr-soft">
 
         <!-- Bottom Label Section -->
         <div class="control-group">
@@ -395,7 +395,7 @@
           <textarea id="labelText" placeholder="Ví dụ: QUÉT TÔI NHÉ&#10;(Nhấn Enter để xuống dòng)" rows="2"></textarea>
         </div>
 
-        <div id="labelBottomSettings" style="display: none;">
+        <div id="labelBottomSettings">
           <div class="control-group inline">
             <div>
               <label>Màu chữ dưới</label>
@@ -448,7 +448,10 @@
 
   <!-- Footer -->
   <footer>
-    <p>QR Art Studio &copy; 2026. Thiết kế cao cấp, hoạt động 100% bảo mật ngoại tuyến (offline).</p>
+    <p>QR Art Studio &copy; 2026</p>
+    <p class="footer-credit">
+      Một phần của <a href="https://js-tools.org" target="_blank" rel="noopener noreferrer" class="footer-link">js-tools.org</a>
+    </p>
   </footer>
 
   <!-- Vite entry script -->
